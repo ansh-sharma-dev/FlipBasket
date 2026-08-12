@@ -1,0 +1,30 @@
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    margin:30px;
+}
+
+h1{
+    text-align:center;
+}
+
+.item{
+    background:white;
+    padding:15px;
+    margin:15px auto;
+    width:400px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+button{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}

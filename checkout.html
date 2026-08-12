@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+    <h1>Checkout 🛍️</h1>
+
+    <div class="checkout-box">
+
+        <div id="orderSummary">
+            <h2>Your Order</h2>
+            
+            <img id="orderimage" src="" width="120" alt="Product Image">
+
+            <p id="orderName"></p>
+            <p id="orderPrice"></p>
+        </div>
+
+        <input id="name" type="text" placeholder="Full Name">
+
+        <input id="phone" type="tel" placeholder="Phone Number">
+
+        <textarea id="address" placeholder="delivery Address">
+            </textarea>
+
+        <button onclick="placeOrder()">Place Order
+        </button>
+
+    </div>
+    <script>
+        let product = JSON.parse(localStorage.getItem("buyNowProduct"));
+
+        if (product) {
+
+            document.getElementById("orderName").innerText =
+                "Product : " + product.name;
+            
+            document.getElementById("orderimage").src= 
+            product.image;    
+
+            document.getElementById("orderPrice").innerText =
+                "Price : ₹" + product.price;
+        }
+
+        function placeOrder() {
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let address = document.getElementById("address").value;
+
+            if (name === "" || phone === "" || address === "") {
+                alert("please fill all details");
+                return;
+            }
+            alert("🎉 Order Placed Successfully");
+
+            localStorage.removeItem("cart");
+
+            window.location.href = "success.html";
+        }
+    </script>
+</body>
+
+</html>

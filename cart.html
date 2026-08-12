@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+    <h1 class="cart-title">🛒My Cart</h1>
+    <div id="cartitems"></div>
+
+    <div class="cart-footer">
+        <h2 id="totle">Totle:₹0</h2>
+
+        <button class="continue-btn" onclick="window.location.href='index-old.html'">Continue Shopping</button>
+
+
+        <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        let container = document.getElementById("cartitems");
+
+        let total = 0;
+
+        if (cart.length === 0) {
+            container.innerHTML = "<h2 class='empty'>🛒 Your Cart is Empty</h2>";
+        } else {
+            cart.forEach((item, index) => {
+
+                total += item.price * item.quantity;
+
+                let div = document.createElement("div");
+
+                div.className = "cart-item";
+
+                div.innerHTML = `
+                <div class="cart-left">
+
+                    <img 
+                src="${item.image}"
+                class="cart-img">
+
+                <div class="cart-info">
+                <h2>${item.name}</h2>
+                <p>₹${item.price}</p>   
+            </div>
+
+         </div>
+
+            <div class="cart-right">
+        <button onclick="changeQty(${index},-1)">-</button>
+
+            <span>${item.quantity}</span>
+
+        <button onclick="changeQty(${index},1)">+</button>
+
+        <button class="remove-btn"
+        onclick="removeItem(${index})">Remove</button>
+
+        </div>
+        ;`
+                container.appendChild(div);
+            })
+            document.getElementById("totle").innerText =
+                "Total:₹" + total;
+        }
+    </script>
+</body>
+
+</html>
