@@ -1,5 +1,5 @@
 # 🛒 FlipBasket
-
+![FlipBasket Project Preview](./flipbasket.png)
 A responsive e-commerce web application built with HTML, CSS, and JavaScript, designed to provide a complete online shopping experience.
 
 ## 🚀 Live Demo
